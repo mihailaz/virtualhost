@@ -73,8 +73,8 @@ if [ "$action" == 'create' ]
 		<VirtualHost *:80>
 			ServerAdmin $email
 			ServerName $domain
-			DocumentRoot $rootDir
-			<Directory $rootDir>
+			DocumentRoot $rootDir/public
+			<Directory $rootDir/public>
 				Options Indexes FollowSymLinks MultiViews
                 AllowOverride All
                 Require all granted
