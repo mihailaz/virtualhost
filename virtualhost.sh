@@ -10,7 +10,7 @@ owner=$(who am i | awk '{print $1}')
 email='webmaster@localhost'
 sitesEnable='/etc/apache2/sites-enabled/'
 sitesAvailable='/etc/apache2/sites-available/'
-userDir='/var/www/'
+userDir='/home/michael/projects/'
 sitesAvailabledomain=$sitesAvailable$domain.conf
 
 ### don't modify from here unless you know what you are doing ####
@@ -65,6 +65,7 @@ if [ "$action" == 'create' ]
 			else
 				echo $"Added content to $rootDir/phpinfo.php"
 			fi
+			rm $rootDir/phpinfo.php
 		fi
 
 		### create virtual host rules file
@@ -72,15 +73,11 @@ if [ "$action" == 'create' ]
 		<VirtualHost *:80>
 			ServerAdmin $email
 			ServerName $domain
-			ServerAlias $domain
 			DocumentRoot $rootDir
-			<Directory />
-				AllowOverride All
-			</Directory>
 			<Directory $rootDir>
 				Options Indexes FollowSymLinks MultiViews
-				AllowOverride all
-				Require all granted
+                AllowOverride All
+                Require all granted
 			</Directory>
 			ErrorLog /var/log/apache2/$domain-error.log
 			LogLevel error
