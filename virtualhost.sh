@@ -99,11 +99,11 @@ if [ "$action" == 'create' ]
 			echo -e $"Host added to /etc/hosts file \n"
 		fi
 
-		if [ "$owner" == "" ]; then
-			chown -R $(whoami):$(whoami) $rootDir
-		else
-			chown -R $owner:$owner $rootDir
-		fi
+#		if [ "$owner" == "" ]; then
+#			chown -R $(whoami):$(whoami) $rootDir
+#		else
+#			chown -R $owner:$owner $rootDir
+#		fi
 
 		### enable website
 		a2ensite $domain
