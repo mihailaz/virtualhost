@@ -4,8 +4,8 @@ TEXTDOMAIN=virtualhost
 
 ### Set default parameters
 action=$1
-domain=$2
-rootDir=$3
+rootDir=$2
+domain=$3
 owner=$(who am i | awk '{print $1}')
 email='webmaster@localhost'
 sitesEnable='/etc/apache2/sites-enabled/'
@@ -26,14 +26,14 @@ if [ "$action" != 'create' ] && [ "$action" != 'delete' ]
 		exit 1;
 fi
 
-while [ "$domain" == "" ]
+while [ "$rootDir" == "" ]
 do
-	echo -e $"Please provide domain. e.g.dev,staging"
-	read domain
+	echo -e $"Please provide root dir."
+	read rootDir
 done
 
-if [ "$rootDir" == "" ]; then
-	rootDir=${domain//./}
+if [ "$domain" == "" ]; then
+	domain=$rootDir.local
 fi
 
 ### if root dir starts with '/', don't use /var/www as default starting point
