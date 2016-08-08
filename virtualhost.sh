@@ -75,7 +75,7 @@ if [ "$action" == 'create' ]
 			ServerName $domain
 			DocumentRoot $rootDir/public
 			<Directory $rootDir/public>
-				Options Indexes FollowSymLinks MultiViews
+				Options Indexes FollowSymLinks
                 AllowOverride All
                 Require all granted
 			</Directory>
